@@ -5,7 +5,7 @@ public class Frog {
     private boolean isFroglet;
     
     private static String species = "Rare Pepe";
-    final static private int DEFAULT_AGE = 5;
+    final static private double DEFAULT_AGE = 0.45;
     final static private double DEFAULT_TONGUE_SPEED = 5.0;
 
     public Frog(String name) {
@@ -20,6 +20,13 @@ public class Frog {
         this.name = name;
         this.age = (int) (ageInYears * 12);
         this.tongueSpeed = tongueSpeed;
+
+        if (this.age > 1 && this.age < 7) {
+            this.isFroglet = true;
+        }
+        else {
+            this.isFroglet = false;
+        }
     }
 
     public String getSpecies() {
@@ -69,6 +76,7 @@ public class Frog {
         if (fly.isDead()) {
             return;
         }
+        
         if (this.tongueSpeed > fly.getSpeed()) {
             if ((fly.getMass() * 0.5) >= this.age) {
                 this.grow();
